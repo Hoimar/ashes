@@ -8,11 +8,26 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Arrow",
+"language": "GDScript",
+"path": "res://scripts/arrow.gd"
+} ]
+_global_script_class_icons={
+"Arrow": ""
+}
+
 [application]
 
 config/name="The best Wild Jam 33 Entry"
-run/main_scene="res://test.tscn"
+run/main_scene="res://scenes/main.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=800
+window/size/height=800
 
 [physics]
 
@@ -20,4 +35,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"
