@@ -1,0 +1,14 @@
+List of sprites
+
+1. hero sprite with animations walk, die, win (he's slowly stomping/tramping/galumphing towards the goal, right?)
+2. enemy sprite with animations walk, attack, die
+3. arrow sprite, doesn't need animations for now I guess
+4. archer sprite with animations idle, shoot, perhaps won and lost.
+5. midground: floor/land where the action will be, this could contain the path for the hero already
+6. foreground: cliffs and whatever you want to have in the foreground
+7. background: sky, clouds, mountains
+8. goal (castle, perhaps princess) for the hero, though if you want you can draw this directly in the midground as the path is in stone as well too 
+9. crosshairs for aiming
+10. (unsure) UI elements like health bar
+11. (unsure) explosion if we want exploding arrows later
+

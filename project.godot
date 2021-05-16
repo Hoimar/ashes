@@ -12,22 +12,38 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Arrow",
 "language": "GDScript",
-"path": "res://scripts/arrow.gd"
+"path": "res://scripts/arrow_controller.gd"
+}, {
+"base": "Node2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://scripts/enemy.gd"
+}, {
+"base": "Node2D",
+"class": "Hero",
+"language": "GDScript",
+"path": "res://scripts/hero.gd"
 } ]
 _global_script_class_icons={
-"Arrow": ""
+"Arrow": "",
+"Enemy": "",
+"Hero": ""
 }
 
 [application]
 
-config/name="The best Wild Jam 33 Entry"
+config/name="Archery"
 run/main_scene="res://scenes/main.tscn"
 config/icon="res://icon.png"
 
 [display]
 
-window/size/width=800
-window/size/height=800
+window/size/width=500
+window/size/height=540
+window/size/test_width=750
+window/size/test_height=810
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [physics]
 

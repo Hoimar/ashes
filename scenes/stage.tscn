@@ -6,26 +6,12 @@
 [ext_resource path="res://scenes/goal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/stage.gd" type="Script" id=5]
 
-[sub_resource type="Curve2D" id=1]
-_data = {
-"points": PoolVector2Array( -134.593, 60.054, 134.593, -60.054, 679.785, 444.167, -12.9665, 43.0581, 12.9665, -43.0581, 941.413, 262.628, -44.8732, 59.7389, 44.8732, -59.7389, 591.685, 71.7463, -68.1165, 139.942, 68.1165, -139.942, 953.427, -68.4119 )
-}
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 250, 180 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "hero_follow_path"
-length = 20.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Game/HeroPath/HeroPathFollow:unit_offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 20 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 1.0 ]
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 433.76, 50.9424, -433.76, -50.9424, 459.918, 257.688, -47.2118, 52.6325, 47.2118, -52.6325, 687.964, 126.657, -25.9519, 40.9901, 25.9519, -40.9901, 278.436, 42.7927, 177.549, 123.61, -177.549, -123.61, 658.986, -78.7104 )
 }
 
 [node name="Stage" type="Node2D" groups=[
@@ -36,25 +22,68 @@ script = ExtResource( 5 )
 [node name="Game" type="YSort" parent="."]
 
 [node name="EnemySpawner" parent="Game" instance=ExtResource( 1 )]
+monitoring = false
+monitorable = false
+collision_layer = 0
+collision_mask = 0
+
+[node name="SpawnArea" type="CollisionShape2D" parent="Game/EnemySpawner"]
+position = Vector2( 250, 250 )
+shape = SubResource( 1 )
 
 [node name="Archer" parent="Game" instance=ExtResource( 2 )]
-position = Vector2( 65.6019, 716.743 )
+position = Vector2( 28.638, 498.332 )
 
 [node name="HeroPath" type="Path2D" parent="Game"]
 position = Vector2( -227.21, 149.787 )
-curve = SubResource( 1 )
+curve = SubResource( 2 )
 
 [node name="HeroPathFollow" type="PathFollow2D" parent="Game/HeroPath"]
-position = Vector2( 679.785, 444.167 )
+position = Vector2( 459.918, 257.688 )
 rotate = false
 loop = false
 
 [node name="Hero" parent="Game/HeroPath/HeroPathFollow" instance=ExtResource( 3 )]
 
 [node name="Goal" parent="Game" instance=ExtResource( 4 )]
-position = Vector2( 727.809, 55.8108 )
+position = Vector2( 430.644, 38.2897 )
 
-[node name="HeroPathAnimation" type="AnimationPlayer" parent="."]
-anims/hero_follow_path = SubResource( 2 )
+[node name="HeroPathTween" type="Tween" parent="."]
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelHealth" type="Label" parent="UI/HBoxContainer"]
+margin_top = 13.0
+margin_right = 81.0
+margin_bottom = 27.0
+text = "Hero Health:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HBoxContainer"]
+margin_left = 85.0
+margin_right = 85.0
+margin_bottom = 40.0
+
+[node name="LabelScore" type="Label" parent="UI/HBoxContainer"]
+margin_left = 89.0
+margin_top = 13.0
+margin_right = 140.0
+margin_bottom = 27.0
+text = "Score: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="mouse_clicked" from="." to="Game/Archer" method="_on_Stage_mouse_clicked"]
+[connection signal="tween_completed" from="HeroPathTween" to="." method="_on_HeroPathTween_tween_completed"]

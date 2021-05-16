@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/arrow_controller.gd" type="Script" id=1]
+[ext_resource path="res://scenes/arrow_base.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Curve2D" id=1]
+resource_local_to_scene = true
+_data = {
+"points": PoolVector2Array( 0.33253, 69.3975, -0.33253, -69.3975, 0.38992, -2.36453, -127.644, -1.1519, 127.644, 1.1519, 128, -320, 0.0772518, -5.71764, -0.0772518, 5.71764, 256, -256 )
+}
+
+[node name="ArrowController" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 0.38992, -2.36453 )
+rotation = -1.57373
+lookahead = 10.0
+
+[node name="ArrowBase" parent="Path2D/PathFollow2D" instance=ExtResource( 2 )]
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
