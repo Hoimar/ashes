@@ -1,6 +1,6 @@
 extends Node2D
 
-const HERO_WALK_DURATION := 60.0
+const HERO_WALK_DURATION := 120.0
 
 enum STATE {
 	RUNNING,
@@ -43,7 +43,7 @@ func set_state(var new):
 	state = new
 
 
-func _on_HeroPathTween_tween_completed(object, key):
+func _on_HeroPathTween_tween_completed(_object, _key):
 	set_state(STATE.WON)
 
 

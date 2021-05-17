@@ -37,5 +37,5 @@ func _ready():
 	tween.start()
 
 
-func _on_Tween_tween_completed(object, key):
+func _on_Tween_tween_completed(_object, _key):
 	queue_free()

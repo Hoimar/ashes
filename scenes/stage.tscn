@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/enemy_spawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/archer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/hero.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/goal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/stage.gd" type="Script" id=5]
+[ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/enemy_wave.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/enemy_group.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scripts/wave_manager.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 250, 180 )
@@ -84,6 +88,21 @@ text = "Score: 0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="WaveManager" type="Node" parent="."]
+script = ExtResource( 9 )
+
+[node name="EnemyWave" parent="WaveManager" instance=ExtResource( 7 )]
+
+[node name="EnemyGroup" parent="WaveManager/EnemyWave" instance=ExtResource( 8 )]
+amount = 8
+scene = ExtResource( 6 )
+
+[node name="EnemyWave2" parent="WaveManager" instance=ExtResource( 7 )]
+
+[node name="EnemyGroup" parent="WaveManager/EnemyWave2" instance=ExtResource( 8 )]
+amount = 15
+scene = ExtResource( 6 )
 
 [connection signal="mouse_clicked" from="." to="Game/Archer" method="_on_Stage_mouse_clicked"]
 [connection signal="tween_completed" from="HeroPathTween" to="." method="_on_HeroPathTween_tween_completed"]

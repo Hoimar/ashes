@@ -15,7 +15,7 @@ enum STATE {
 
 var state := 0
 var health := HEALTH_START
-var direction := -1
+var facing_direction := -1
 var damage := 1
 var velocity := Vector2.ZERO
 onready var knockback_tween := $KnockbackTween
@@ -59,5 +59,5 @@ func _on_Hitbox_area_entered(var area: Area2D):
 		knockback(hero.global_position)
 
 
-func _on_KnockbackTween_tween_completed(object, key):
+func _on_KnockbackTween_tween_completed(_object, _key):
 	state = STATE.CHASING
