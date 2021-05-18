@@ -1,13 +1,7 @@
 class_name Arrow
 extends Node2D
 
-const FLIGHT_DURATION := 1.0   # Duration of arrow flight in seconds.
-# Bezier curve control points.
-const CURVE_CONTROLS = [
-	Vector2(-50, 0),
-	Vector2(0, 50),
-	Vector2(0, -50),
-]
+const TIME_DIST_FACTOR := 400.0   # Duration of arrow flight in seconds.
 
 var target: Vector2
 onready var path := $Path2D
@@ -28,12 +22,12 @@ func _ready():
 	var control_point = Vector2(target_pos.x / 2.0, 0)
 	path.curve.set_point_in(1, -control_point)
 	path.curve.set_point_out(1, control_point)
-	path.curve.set_point_out(0, Vector2(0, -length * 0.2))
-	path.curve.set_point_in(2,  Vector2(0, -length * 0.1))
+	path.curve.set_point_out(0, Vector2(0, -length * 0.3))
+	path.curve.set_point_in(2,  Vector2(0, 0))
 	
 	# Interpolate arrow flight.
 	tween.interpolate_property(path_follow, "unit_offset", 0, 0.9999, \
-			FLIGHT_DURATION, Tween.TRANS_SINE, Tween.EASE_OUT)
+			length / TIME_DIST_FACTOR, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.start()
 
 

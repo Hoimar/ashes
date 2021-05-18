@@ -51,17 +51,25 @@ _global_script_class_icons={
 [application]
 
 config/name="Archery"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/main_menu.tscn"
 config/icon="res://icon.png"
 
 [display]
 
-window/size/width=500
-window/size/height=540
-window/size/test_width=1000
-window/size/test_height=1080
+window/size/width=288
+window/size/height=288
+window/size/test_width=864
+window/size/test_height=864
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
+
+[input]
+
+shoot={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
 
 [physics]
 

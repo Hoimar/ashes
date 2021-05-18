@@ -3,8 +3,8 @@ extends Node2D
 
 const SCORE_BONUS := 3.0
 const SPEED := 15.0
-const KNOCKBACK_DISTANCE := 50.0
-const KNOCKBACK_DURATION := 1.5
+const KNOCKBACK_DISTANCE := 35.0
+const KNOCKBACK_DURATION := 1.0
 const HEALTH_START := 3
 
 enum STATE {
@@ -47,10 +47,10 @@ func take_hit(var amount := 1):
 
 func knockback(var source: Vector2):
 	state = STATE.KNOCKBACK
-	var vector = (source - global_position).normalized() * KNOCKBACK_DISTANCE
+	var vector = (global_position - source).normalized() * KNOCKBACK_DISTANCE
 	knockback_tween.interpolate_property(self, "position", position, \
 			position + vector, KNOCKBACK_DURATION,
-			Tween.TRANS_CUBIC, Tween.EASE_OUT)
+			Tween.TRANS_QUAD, Tween.EASE_OUT)
 	knockback_tween.start()
 
 

@@ -10,19 +10,16 @@ enum STATE {
 }
 
 signal hero_died
+signal hero_hurt(health)
 
 var state: int = STATE.WALKING
 var health := HEALTH_START
 onready var animation_player = $AnimationPlayer
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 
 func take_hit(var damage: int = 1):
@@ -31,8 +28,10 @@ func take_hit(var damage: int = 1):
 	if health <= 0:
 		state = STATE.DYING
 		emit_signal("hero_died")
+		emit_signal("hero_hurt", health)
 	else:
 		state = STATE.HURT
+		emit_signal("hero_hurt", health)
 
 
 func _on_Hitbox_area_entered(var area: Area2D):

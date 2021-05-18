@@ -7,21 +7,30 @@
 [ext_resource path="res://scripts/stage.gd" type="Script" id=5]
 [ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/enemy_wave.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/enemy_group.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scripts/wave_manager.gd" type="Script" id=9]
+[ext_resource path="res://assets/sprites/GROUND 2-export.png" type="Texture" id=8]
+[ext_resource path="res://scripts/levels.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 250, 180 )
+extents = Vector2( 144, 88.6581 )
 
 [sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( 433.76, 50.9424, -433.76, -50.9424, 459.918, 257.688, -47.2118, 52.6325, 47.2118, -52.6325, 687.964, 126.657, -25.9519, 40.9901, 25.9519, -40.9901, 278.436, 42.7927, 177.549, 123.61, -177.549, -123.61, 658.986, -78.7104 )
+"points": PoolVector2Array( -166.06, 31.4856, 166.06, -31.4856, 348.088, 88.2037, -5.93688, 19.6824, 5.93688, -19.6824, 300.21, -8.287, -20.9008, 39.3064, 20.9008, -39.3064, 427.71, -46.287, -226.928, 28.1746, 226.928, -28.1746, 454.161, -112.156 )
 }
 
 [node name="Stage" type="Node2D" groups=[
 "stage",
 ]]
 script = ExtResource( 5 )
+
+[node name="Ground" type="Sprite" parent="."]
+texture = ExtResource( 8 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 288, 288 )
+
+[node name="Goal" parent="." instance=ExtResource( 4 )]
+position = Vector2( 239.981, 20.828 )
 
 [node name="Game" type="YSort" parent="."]
 
@@ -32,25 +41,28 @@ collision_layer = 0
 collision_mask = 0
 
 [node name="SpawnArea" type="CollisionShape2D" parent="Game/EnemySpawner"]
-position = Vector2( 250, 250 )
+position = Vector2( 144, 131.212 )
 shape = SubResource( 1 )
-
-[node name="Archer" parent="Game" instance=ExtResource( 2 )]
-position = Vector2( 28.638, 498.332 )
 
 [node name="HeroPath" type="Path2D" parent="Game"]
 position = Vector2( -227.21, 149.787 )
 curve = SubResource( 2 )
 
 [node name="HeroPathFollow" type="PathFollow2D" parent="Game/HeroPath"]
-position = Vector2( 459.918, 257.688 )
+position = Vector2( 348.088, 88.2037 )
 rotate = false
 loop = false
 
 [node name="Hero" parent="Game/HeroPath/HeroPathFollow" instance=ExtResource( 3 )]
 
-[node name="Goal" parent="Game" instance=ExtResource( 4 )]
-position = Vector2( 430.644, 38.2897 )
+[node name="Cliffs" type="Sprite" parent="."]
+texture = ExtResource( 8 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 288, 288, 288 )
+
+[node name="Archer" parent="." instance=ExtResource( 2 )]
+position = Vector2( 16.0246, 262.979 )
 
 [node name="HeroPathTween" type="Tween" parent="."]
 
@@ -62,47 +74,54 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 5.0
+margin_top = 5.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LabelHealth" type="Label" parent="UI/HBoxContainer"]
-margin_top = 13.0
-margin_right = 81.0
-margin_bottom = 27.0
-text = "Hero Health:"
+margin_right = 93.0
+margin_bottom = 14.0
+text = "Hero Health: 1"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/HBoxContainer"]
-margin_left = 85.0
-margin_right = 85.0
-margin_bottom = 40.0
+margin_left = 97.0
+margin_right = 97.0
+margin_bottom = 14.0
 
 [node name="LabelScore" type="Label" parent="UI/HBoxContainer"]
-margin_left = 89.0
-margin_top = 13.0
-margin_right = 140.0
-margin_bottom = 27.0
+margin_left = 101.0
+margin_right = 152.0
+margin_bottom = 14.0
 text = "Score: 0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="WaveManager" type="Node" parent="."]
+[node name="BasinContainer" type="HBoxContainer" parent="UI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -40.0
+margin_right = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Levels" type="Node" parent="."]
 script = ExtResource( 9 )
 
-[node name="EnemyWave" parent="WaveManager" instance=ExtResource( 7 )]
-
-[node name="EnemyGroup" parent="WaveManager/EnemyWave" instance=ExtResource( 8 )]
-amount = 8
+[node name="EnemyWave1" parent="Levels" instance=ExtResource( 7 )]
+amount = 5
 scene = ExtResource( 6 )
+duration = 15.0
+cooldown = 15.0
 
-[node name="EnemyWave2" parent="WaveManager" instance=ExtResource( 7 )]
-
-[node name="EnemyGroup" parent="WaveManager/EnemyWave2" instance=ExtResource( 8 )]
-amount = 15
+[node name="EnemyWave2" parent="Levels" instance=ExtResource( 7 )]
+amount = 10
 scene = ExtResource( 6 )
+duration = 15.0
+cooldown = 15.0
 
-[connection signal="mouse_clicked" from="." to="Game/Archer" method="_on_Stage_mouse_clicked"]
+[connection signal="mouse_clicked" from="." to="Archer" method="_on_Stage_mouse_clicked"]
 [connection signal="tween_completed" from="HeroPathTween" to="." method="_on_HeroPathTween_tween_completed"]
