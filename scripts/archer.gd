@@ -10,7 +10,7 @@ enum STATE {
 
 var state = STATE.IDLE
 
-onready var stage: Node2D = get_tree().get_nodes_in_group("stage")[0]
+onready var stage: Node = get_tree().get_nodes_in_group("stage")[0]
 onready var anim_sprite := $AnimatedSprite
 onready var arrow_offset := $ArrowOffset
 

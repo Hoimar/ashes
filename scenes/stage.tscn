@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/enemy_spawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/archer.tscn" type="PackedScene" id=2]
@@ -8,20 +8,26 @@
 [ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/enemy_wave.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/sprites/GROUND 2-export.png" type="Texture" id=8]
-[ext_resource path="res://scripts/levels.gd" type="Script" id=9]
+[ext_resource path="res://scripts/waves.gd" type="Script" id=9]
+[ext_resource path="res://assets/sprites/rock sprites.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 144, 88.6581 )
 
 [sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( -166.06, 31.4856, 166.06, -31.4856, 348.088, 88.2037, -5.93688, 19.6824, 5.93688, -19.6824, 300.21, -8.287, -20.9008, 39.3064, 20.9008, -39.3064, 427.71, -46.287, -226.928, 28.1746, 226.928, -28.1746, 454.161, -112.156 )
+"points": PoolVector2Array( -166.06, 31.4856, 166.06, -31.4856, 348.088, 88.2037, -5.93688, 19.6824, 5.93688, -19.6824, 272.566, -3.66988, -28.2424, 31.9648, 28.2424, -31.9648, 480.133, -26.3622, -226.261, 24.5038, 226.261, -24.5038, 483.666, -92.1352 )
 }
 
-[node name="Stage" type="Node2D" groups=[
+[node name="Stage" type="Control" groups=[
 "stage",
 ]]
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Ground" type="Sprite" parent="."]
 texture = ExtResource( 8 )
@@ -30,7 +36,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 288, 288 )
 
 [node name="Goal" parent="." instance=ExtResource( 4 )]
-position = Vector2( 239.981, 20.828 )
+position = Vector2( 247.541, 35.3171 )
 
 [node name="Game" type="YSort" parent="."]
 
@@ -60,6 +66,11 @@ texture = ExtResource( 8 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 288, 288, 288 )
+
+[node name="Rocks" type="Sprite" parent="."]
+position = Vector2( 197.5, 208 )
+texture = ExtResource( 10 )
+centered = false
 
 [node name="Archer" parent="." instance=ExtResource( 2 )]
 position = Vector2( 16.0246, 262.979 )
@@ -102,22 +113,24 @@ __meta__ = {
 [node name="BasinContainer" type="HBoxContainer" parent="UI"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -40.0
-margin_right = 40.0
+margin_left = 51.0
+margin_top = -48.0
+margin_right = 91.0
+margin_bottom = -8.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Levels" type="Node" parent="."]
+[node name="Waves" type="Node" parent="."]
 script = ExtResource( 9 )
 
-[node name="EnemyWave1" parent="Levels" instance=ExtResource( 7 )]
+[node name="EnemyWave1" parent="Waves" instance=ExtResource( 7 )]
 amount = 5
 scene = ExtResource( 6 )
 duration = 15.0
 cooldown = 15.0
 
-[node name="EnemyWave2" parent="Levels" instance=ExtResource( 7 )]
+[node name="EnemyWave2" parent="Waves" instance=ExtResource( 7 )]
 amount = 10
 scene = ExtResource( 6 )
 duration = 15.0

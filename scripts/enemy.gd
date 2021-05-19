@@ -21,7 +21,7 @@ var velocity := Vector2.ZERO
 onready var knockback_tween := $KnockbackTween
 onready var animation_player := $AnimationPlayer
 onready var hero: Node2D = get_tree().get_nodes_in_group("hero")[0]
-onready var stage: Node2D = get_tree().get_nodes_in_group("stage")[0]
+onready var stage: Node = get_tree().get_nodes_in_group("stage")[0]
 
 
 # Called when the node enters the scene tree for the first time.

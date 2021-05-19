@@ -20,11 +20,6 @@ _global_script_classes=[ {
 "path": "res://scripts/enemy.gd"
 }, {
 "base": "Node2D",
-"class": "EnemyGroup",
-"language": "GDScript",
-"path": "res://scripts/enemy_group.gd"
-}, {
-"base": "Node2D",
 "class": "EnemySpawner",
 "language": "GDScript",
 "path": "res://scripts/enemy_spawner.gd"
@@ -34,18 +29,29 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/enemy_wave.gd"
 }, {
+"base": "CenterContainer",
+"class": "GamePopup",
+"language": "GDScript",
+"path": "res://scripts/game_popup.gd"
+}, {
 "base": "Node2D",
 "class": "Hero",
 "language": "GDScript",
 "path": "res://scripts/hero.gd"
+}, {
+"base": "CanvasItem",
+"class": "Stage",
+"language": "GDScript",
+"path": "res://scripts/stage.gd"
 } ]
 _global_script_class_icons={
 "Arrow": "",
 "Enemy": "",
-"EnemyGroup": "",
 "EnemySpawner": "",
 "EnemyWave": "",
-"Hero": ""
+"GamePopup": "",
+"Hero": "",
+"Stage": ""
 }
 
 [application]
@@ -53,6 +59,10 @@ _global_script_class_icons={
 config/name="Archery"
 run/main_scene="res://scenes/main_menu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://scripts/global.gd"
 
 [display]
 

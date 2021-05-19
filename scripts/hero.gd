@@ -17,11 +17,6 @@ var health := HEALTH_START
 onready var animation_player = $AnimationPlayer
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
 func take_hit(var damage: int = 1):
 	health -= damage
 	animation_player.play("take_damage")

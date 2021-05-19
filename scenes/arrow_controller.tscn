@@ -17,7 +17,7 @@ curve = SubResource( 1 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2( 0.38992, -2.36453 )
-rotation = -1.57373
+rotation = -1.58587
 lookahead = 10.0
 
 [node name="ArrowBase" parent="Path2D/PathFollow2D" instance=ExtResource( 2 )]
