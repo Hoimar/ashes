@@ -12,7 +12,7 @@ enum STATE {
 	LOST,
 }
 
-var level: int = 3
+var level: int = 0
 var state: int
 var score: int
 
