@@ -1,7 +1,8 @@
 extends Node
 
-const STAGE := preload("res://scenes/stage.tscn")
-const POPUP := preload("res://scenes/game_popup.tscn")
+const STAGE := preload("res://scenes/gamestates/stage.tscn")
+const POPUP := preload("res://scenes/gamestates/game_popup.tscn")
+const ENDING := preload("res://scenes/gamestates/ending.tscn")
 
 const MAX_LEVELS := 4
 enum STATE {
@@ -11,8 +12,9 @@ enum STATE {
 	LOST,
 }
 
-var level: int = 0
+var level: int = 3
 var state: int
+var score: int
 
 
 func start_level(var next: bool = false):
@@ -20,9 +22,10 @@ func start_level(var next: bool = false):
 		level += 1
 	if level == MAX_LEVELS:
 		# TODO: Show ending.
-		pass
-	set_state(STATE.RUNNING)
-	get_tree().change_scene_to(STAGE)
+		get_tree().change_scene_to(ENDING)
+	else:
+		set_state(STATE.RUNNING)
+		get_tree().change_scene_to(STAGE)
 
 
 func set_state(var new):
@@ -33,5 +36,4 @@ func set_state(var new):
 		get_tree().paused = false
 	else:
 		get_tree().paused = true
-		var popup = POPUP.instance()
-		get_tree().get_root().add_child(popup)
+		get_tree().get_root().add_child(POPUP.instance())

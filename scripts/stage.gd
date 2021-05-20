@@ -15,6 +15,7 @@ onready var hero: Hero = get_tree().get_nodes_in_group("hero")[0]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
 	hero.connect("hero_died", self, "lose")
 	hero.connect("hero_hurt", self, "hero_health_changed")
 	hero_health_changed(Hero.HEALTH_START)

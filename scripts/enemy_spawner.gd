@@ -1,7 +1,6 @@
 class_name EnemySpawner
 extends Node2D
 
-const SPAWN_OFFSET := 16.0
 
 var spawn_area: RectangleShape2D
 onready var right_edge := get_viewport_rect().size.x
@@ -16,11 +15,12 @@ func _ready():
 
 func spawn(var scene: PackedScene):
 	var side: int = randi() % 2
-	var offset = SPAWN_OFFSET if side == 1 else -SPAWN_OFFSET
 	var x: float = 0.0 if side == 0 else right_edge
 	var y: float = randf() * spawn_area.extents.y * 2
-	var pos := Vector2(x + offset, y)
 	var enemy: Enemy = scene.instance()
-	enemy.position = pos
+	enemy.position = Vector2(x, y)
 	enemy.facing_direction = side
 	add_child(enemy)
+	var enemy_width := enemy.get_hitbox().x * 2
+	enemy.position.x += enemy_width if side == 1 else -enemy_width
+

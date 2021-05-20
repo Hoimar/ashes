@@ -1,0 +1,26 @@
+[gd_scene format=2]
+
+[node name="Ending" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="CenterContainer"]
+margin_left = 45.0
+margin_top = 128.0
+margin_right = 243.0
+margin_bottom = 159.0
+text = "You did it, you crazy hedgehog!
+Congratulations!"
+align = 1

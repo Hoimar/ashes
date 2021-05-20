@@ -9,7 +9,7 @@ func _ready():
 
 
 func _on_ButtonPlay_pressed():
-	get_tree().change_scene("res://scenes/stage.tscn")
+	get_tree().change_scene_to(Global.STAGE)
 
 
 func _on_ButtonExit_pressed():
