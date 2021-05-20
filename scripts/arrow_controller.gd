@@ -1,7 +1,7 @@
 class_name Arrow
 extends Node2D
 
-const TIME_DIST_FACTOR := 400.0   # flight path length / factor = duration in sec
+const TIME_DIST_FACTOR := 350.0   # flight path length / factor = duration in sec
 
 var target: Vector2
 onready var path := $Path2D

@@ -44,7 +44,7 @@ health = 10
 [node name="AnimatedSprite" parent="." index="0"]
 frames = SubResource( 7 )
 animation = "run"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Hitbox" parent="." index="1"]

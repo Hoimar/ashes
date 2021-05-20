@@ -6,6 +6,7 @@ const LEVELS := "res://scenes/levels/level%d.tscn"
 const CUTSCENES := "res://scenes/cutscenes/%s.tscn"
 
 const GAME_SEQUENCE = [
+	CUTSCENES % "intro",
 	LEVELS % 1,
 	LEVELS % 2,
 	LEVELS % 3,

@@ -26,9 +26,6 @@ script = ExtResource( 2 )
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 3
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 

@@ -5,18 +5,17 @@ const DOWNWARDS_DEGREE_MIN :=  90 + 10
 const DOWNWARDS_DEGREE_MAX := 270 - 10
 
 var damage := 1
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
+onready var hitbox := $Hitbox
 
 
-func _on_Hitbox_area_entered(area: Area2D):
+func _process(var delta: float):
 	var deg := global_rotation_degrees
-	#print(self, " entered ", area.get_parent(), " at ", deg)
-	if      deg > DOWNWARDS_DEGREE_MIN \
-		and deg < DOWNWARDS_DEGREE_MAX \
-		and area.get_parent() is Enemy:
-		var enemy = area.get_parent()
-		enemy.take_hit(damage)
-		queue_free()
+	if      deg < DOWNWARDS_DEGREE_MIN \
+		or deg > DOWNWARDS_DEGREE_MAX:
+		return
+	var areas: Array = hitbox.get_overlapping_areas()
+	for area in areas:
+		if area.get_parent() is Enemy:
+			var enemy = area.get_parent()
+			enemy.take_hit(damage)
+			queue_free()

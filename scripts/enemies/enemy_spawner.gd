@@ -21,6 +21,6 @@ func spawn(var scene: PackedScene):
 	enemy.position = Vector2(x, y)
 	enemy.facing_direction = side
 	add_child(enemy)
-	var enemy_width := enemy.get_hitbox().x * 2
-	enemy.position.x += enemy_width if side == 1 else -enemy_width
+	var enemy_width := enemy.get_hitbox().x
+	enemy.position.x += -enemy_width if side == 0 else enemy_width
 
