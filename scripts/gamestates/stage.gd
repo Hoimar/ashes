@@ -9,7 +9,6 @@ onready var hero_path_follow := $Game/HeroPath/HeroPathFollow
 onready var hero_path_tween := $HeroPathTween
 onready var label_score := $UI/HBoxContainer/LabelScore
 onready var label_health := $UI/HBoxContainer/LabelHealth
-onready var waves := $Waves
 onready var hero: Hero = get_tree().get_nodes_in_group("hero")[0]
 
 

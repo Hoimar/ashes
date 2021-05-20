@@ -1,7 +1,7 @@
 class_name Arrow
 extends Node2D
 
-const TIME_DIST_FACTOR := 400.0   # Duration of arrow flight in seconds.
+const TIME_DIST_FACTOR := 400.0   # flight path length / factor = duration in sec
 
 var target: Vector2
 onready var path := $Path2D
@@ -26,7 +26,7 @@ func _ready():
 	path.curve.set_point_in(2,  Vector2(0, 0))
 	
 	# Interpolate arrow flight.
-	tween.interpolate_property(path_follow, "unit_offset", 0, 0.9999, \
+	tween.interpolate_property(path_follow, "unit_offset", 0, 1.0, \
 			length / TIME_DIST_FACTOR, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.start()
 

@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/music/The Archer fullbeat.ogg" type="AudioStream" id=1]
+[ext_resource path="res://scenes/levels/level.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/enemies/enemy_boss.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/enemies/enemy_wave.tscn" type="PackedScene" id=4]
+
+[node name="Level4" instance=ExtResource( 2 )]
+
+[node name="EnemyWave4" parent="." index="1" instance=ExtResource( 4 )]
+amount = 2
+scene = ExtResource( 3 )
+cooldown = 50.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="2"]
+pause_mode = 2
+stream = ExtResource( 1 )
+autoplay = true

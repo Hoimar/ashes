@@ -16,9 +16,6 @@ func _ready():
 	var spawn_delay = duration / amount
 	spawn_timer.wait_time = spawn_delay
 	cooldown_timer.wait_time = cooldown
-
-
-func start():
 	spawn_timer.start()
 
 

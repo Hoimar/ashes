@@ -9,7 +9,7 @@ func _ready():
 
 
 func _on_ButtonPlay_pressed():
-	get_tree().change_scene_to(Global.STAGE)
+	Global.start_level()
 
 
 func _on_ButtonExit_pressed():

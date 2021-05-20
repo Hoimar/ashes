@@ -1,12 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://scripts/stage.gd" type="Script" id=1]
-[ext_resource path="res://scripts/waves.gd" type="Script" id=2]
+[ext_resource path="res://scripts/gamestates/stage.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/rock sprites.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/GROUND 2-export.png" type="Texture" id=4]
-[ext_resource path="res://scenes/enemies/enemy_boss.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/enemies/enemy_small.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/enemies/enemy_wave.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/enemies/enemy_spawner.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/goal.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/hero.tscn" type="PackedScene" id=10]
@@ -121,30 +117,6 @@ margin_bottom = -8.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Waves" type="Node" parent="."]
-script = ExtResource( 2 )
-
-[node name="EnemyWave1" parent="Waves" instance=ExtResource( 7 )]
-amount = 5
-scene = ExtResource( 6 )
-duration = 15.0
-cooldown = 15.0
-
-[node name="EnemyWave2" parent="Waves" instance=ExtResource( 7 )]
-amount = 5
-scene = ExtResource( 6 )
-
-[node name="EnemyWave3" parent="Waves" instance=ExtResource( 7 )]
-amount = 8
-scene = ExtResource( 6 )
-duration = 20.0
-cooldown = 15.0
-
-[node name="EnemyWave4" parent="Waves" instance=ExtResource( 7 )]
-amount = 2
-scene = ExtResource( 5 )
-cooldown = 50.0
 
 [connection signal="mouse_clicked" from="." to="Archer" method="_on_Stage_mouse_clicked"]
 [connection signal="tween_completed" from="HeroPathTween" to="." method="_on_HeroPathTween_tween_completed"]

@@ -2,7 +2,16 @@ extends Node
 
 const STAGE := preload("res://scenes/gamestates/stage.tscn")
 const POPUP := preload("res://scenes/gamestates/game_popup.tscn")
-const ENDING := preload("res://scenes/gamestates/ending.tscn")
+const LEVELS := "res://scenes/levels/level%d.tscn"
+const CUTSCENES := "res://scenes/cutscenes/%s.tscn"
+
+const GAME_SEQUENCE = [
+	LEVELS % 1,
+	LEVELS % 2,
+	LEVELS % 3,
+	LEVELS % 4,
+	CUTSCENES % "ending",
+]
 
 const MAX_LEVELS := 4
 enum STATE {
@@ -20,12 +29,8 @@ var score: int
 func start_level(var next: bool = false):
 	if next:
 		level += 1
-	if level == MAX_LEVELS:
-		# TODO: Show ending.
-		get_tree().change_scene_to(ENDING)
-	else:
-		set_state(STATE.RUNNING)
-		get_tree().change_scene_to(STAGE)
+	get_tree().change_scene(GAME_SEQUENCE[level])
+	set_state(STATE.RUNNING)
 
 
 func set_state(var new):

@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/music/The Archer 2 piano corregido.ogg" type="AudioStream" id=1]
+[ext_resource path="res://scenes/levels/level.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/enemies/enemy_small.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/enemies/enemy_wave.tscn" type="PackedScene" id=4]
+
+[node name="Level1" instance=ExtResource( 2 )]
+
+[node name="EnemyWave1" parent="." index="1" instance=ExtResource( 4 )]
+amount = 5
+scene = ExtResource( 3 )
+duration = 15.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="2"]
+pause_mode = 2
+stream = ExtResource( 1 )
+autoplay = true

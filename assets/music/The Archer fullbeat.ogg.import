@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/The Archer fullbeat.ogg-09f60f141c10715aba8d8eaea88ff4b6.oggstr"
+
+[deps]
+
+source_file="res://assets/music/The Archer fullbeat.ogg"
+dest_files=[ "res://.import/The Archer fullbeat.ogg-09f60f141c10715aba8d8eaea88ff4b6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
