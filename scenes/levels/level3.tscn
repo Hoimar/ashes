@@ -5,13 +5,12 @@
 [ext_resource path="res://scenes/enemies/enemy_small.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/enemies/enemy_wave.tscn" type="PackedScene" id=4]
 
-[node name="Level1" instance=ExtResource( 2 )]
+[node name="Level3" instance=ExtResource( 2 )]
 
 [node name="EnemyWave3" parent="." index="1" instance=ExtResource( 4 )]
-amount = 8
+amount = 4
 scene = ExtResource( 3 )
-duration = 20.0
-cooldown = 15.0
+cooldown = 0.1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="2"]
 pause_mode = 2

@@ -62,13 +62,13 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Archery"
+config/name="From Ashes"
 run/main_scene="res://scenes/gamestates/main_menu.tscn"
 config/icon="res://icon.png"
 
 [audio]
 
-default_bus_layout="res://audio_bus_layout.tres"
+default_bus_layout="res://assets/audio_bus_layout.tres"
 
 [autoload]
 
@@ -98,5 +98,6 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 quality/driver/driver_name="GLES2"
-environment/default_environment="res://default_env.tres"
+environment/default_clear_color=Color( 0, 0, 0, 1 )
+environment/default_environment="res://assets/default_env.tres"
 quality/dynamic_fonts/use_oversampling=false

@@ -15,7 +15,7 @@ onready var anim_sprite := $AnimatedSprite
 onready var arrow_offset := $ArrowOffset
 
 
-func _on_Stage_mouse_clicked(mouse_position):
+func _on_Stage_mouse_clicked():
 	if state == STATE.SHOOTING:
 		return
 	else:
@@ -24,7 +24,7 @@ func _on_Stage_mouse_clicked(mouse_position):
 	yield(get_tree().create_timer(SHOOTING_DELAY), "timeout")
 	var arrow: Arrow = ARROW.instance()
 	arrow.global_position = arrow_offset.global_position
-	arrow.target = mouse_position
+	arrow.target = get_global_mouse_position()
 	stage.add_child(arrow)
 
 

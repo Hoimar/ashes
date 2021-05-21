@@ -17,10 +17,17 @@ func _ready():
 		Global.STATE.LOST:
 			label_message.text = "The hero died."
 			button_continue.disabled = true
+		Global.STATE.PAUSED:
+			label_message.text = "Game is paused"
+			button_retry.text = "Exit"
+			button_continue.text = "Continue"
 
 
 func _on_ButtonRetry_pressed():
-	Global.start_level()
+	if Global.state == Global.STATE.PAUSED:
+		Global.set_state(Global.STATE.BACK_TO_MENU)
+	else:
+		Global.start_level()
 	queue_free()
 
 

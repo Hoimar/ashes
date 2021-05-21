@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/gamestates/stage.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/rock sprites.png" type="Texture" id=3]
@@ -7,6 +7,9 @@
 [ext_resource path="res://scenes/goal.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/hero.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/archer.tscn" type="PackedScene" id=11]
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.5 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 144, 88.6581 )
@@ -31,6 +34,16 @@ texture = ExtResource( 4 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 288, 288 )
+
+[node name="LineAsHeroPath" type="Line2D" parent="."]
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 124, 236, 164, 227, 173, 220, 177, 213, 174, 205, 161, 194, 56, 156, 48, 150, 49, 143, 113, 139, 195, 139, 233, 134, 251, 126, 253, 117, 250, 111, 217, 99, 168, 84, 163, 78, 169, 71, 261, 52 )
+width = 15.0
+width_curve = SubResource( 3 )
+default_color = Color( 0.466667, 0.403922, 0.27451, 1 )
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
 
 [node name="Goal" parent="." instance=ExtResource( 9 )]
 position = Vector2( 247.541, 35.3171 )
@@ -99,21 +112,12 @@ margin_left = 97.0
 margin_right = 97.0
 margin_bottom = 14.0
 
-[node name="LabelScore" type="Label" parent="UI/HBoxContainer"]
-margin_left = 101.0
-margin_right = 152.0
-margin_bottom = 14.0
-text = "Score: 0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="BasinContainer" type="HBoxContainer" parent="UI"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 51.0
-margin_top = -48.0
-margin_right = 91.0
+margin_left = 43.0
+margin_top = -34.0
+margin_right = 188.0
 margin_bottom = -8.0
 __meta__ = {
 "_edit_use_anchors_": false

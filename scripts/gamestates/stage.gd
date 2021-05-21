@@ -3,11 +3,10 @@ extends CanvasItem
 
 const HERO_WALK_DURATION := 60.0
 
-signal mouse_clicked(position)
+signal mouse_clicked()
 
 onready var hero_path_follow := $Game/HeroPath/HeroPathFollow
 onready var hero_path_tween := $HeroPathTween
-onready var label_score := $UI/HBoxContainer/LabelScore
 onready var label_health := $UI/HBoxContainer/LabelHealth
 onready var hero: Hero = get_tree().get_nodes_in_group("hero")[0]
 
@@ -22,8 +21,10 @@ func _ready():
 
 
 func _process(delta):
-	if Global.state == Global.STATE.RUNNING and Input.is_action_pressed("shoot"):
-		emit_signal("mouse_clicked", get_local_mouse_position())
+	if Input.is_action_pressed("shoot") and Global.state == Global.STATE.RUNNING:
+		emit_signal("mouse_clicked")
+	if Input.is_action_pressed("ui_cancel"):
+		Global.set_state(Global.STATE.PAUSED)
 
 
 func lose():
@@ -33,11 +34,6 @@ func lose():
 
 func _on_HeroPathTween_tween_completed(_object, _key):
 	Global.set_state(Global.STATE.LEVEL_COMPLETE)
-
-
-func increase_score(var amount: int):
-	Global.score += amount
-	label_score.text = "Score: %d" % Global.score
 
 
 func hero_health_changed(var new_health: int):

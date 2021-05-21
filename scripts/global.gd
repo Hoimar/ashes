@@ -2,6 +2,7 @@ extends Node
 
 const STAGE := preload("res://scenes/gamestates/stage.tscn")
 const POPUP := preload("res://scenes/gamestates/game_popup.tscn")
+const MAIN_MENU := preload("res://scenes/gamestates/main_menu.tscn")
 const LEVELS := "res://scenes/levels/level%d.tscn"
 const CUTSCENES := "res://scenes/cutscenes/%s.tscn"
 
@@ -20,17 +21,21 @@ enum STATE {
 	GAME_WON,
 	LEVEL_COMPLETE
 	LOST,
+	PAUSED,
+	BACK_TO_MENU,
 }
 
 var level: int = 0
 var state: int
-var score: int
 
 
 func start_level(var next: bool = false):
-	if next:
-		level += 1
-	get_tree().change_scene(GAME_SEQUENCE[level])
+	if state == STATE.PAUSED:
+		set_state(STATE.RUNNING)
+	else:
+		if next:
+			level += 1
+		get_tree().change_scene(GAME_SEQUENCE[level])
 	set_state(STATE.RUNNING)
 
 
@@ -38,7 +43,10 @@ func set_state(var new):
 	if new == state:
 		return
 	state = new
-	if state == STATE.RUNNING:
+	if state == STATE.BACK_TO_MENU:
+		get_tree().paused = false
+		get_tree().change_scene_to(MAIN_MENU)
+	elif state == STATE.RUNNING:
 		get_tree().paused = false
 	else:
 		get_tree().paused = true

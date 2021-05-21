@@ -1,36 +1,20 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/arrow.png" type="Texture" id=1]
 [ext_resource path="res://scripts/arrow_base.gd" type="Script" id=2]
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9, 3 )
+
 [node name="ArrowBase" type="Node2D"]
-rotation = 1.5708
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -8.875, -6.875 )
-scale = Vector2( 0.1, 0.5 )
 texture = ExtResource( 1 )
-offset = Vector2( 88.75, 13.75 )
-
-[node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( -8.875, -6.875 )
-rotation = 0.785397
-scale = Vector2( 0.0953387, 0.273197 )
-texture = ExtResource( 1 )
-offset = Vector2( 6.11067, -21.4908 )
-
-[node name="Sprite3" type="Sprite" parent="."]
-position = Vector2( -8.875, -6.875 )
-rotation = -0.785397
-scale = Vector2( 0.0953387, 0.273197 )
-texture = ExtResource( 1 )
-offset = Vector2( 125.538, 24.451 )
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
-position = Vector2( 0, -1 )
-polygon = PoolVector2Array( -12, -6.99996, -6.87798e-05, -18, 12, -7.00004, 3.00006, 17, -2.99994, 17 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 1 )

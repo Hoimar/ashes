@@ -21,9 +21,9 @@ onready var direction_finder = $DirectionFinder
 
 func _process(var delta: float):
 	if direction_finder.get_direction() == DirectionFinder.RIGHT:
-		animated_sprite.scale.x = -1
+		scale.x = -1
 	else:
-		animated_sprite.scale.x = 1
+		scale.x = 1
 
 
 func take_hit(var damage: int = 1):

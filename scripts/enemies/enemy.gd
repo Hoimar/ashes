@@ -1,7 +1,6 @@
 class_name Enemy
 extends Node2D
 
-const SCORE_BONUS := 3.0
 const SPEED := 15.0
 const KNOCKBACK_DISTANCE := 35.0
 const KNOCKBACK_DURATION := 1.0
@@ -17,7 +16,6 @@ export var health := HEALTH_BASIC
 var state := 0
 var facing_direction := -1
 var damage := 1
-var velocity := Vector2.ZERO
 onready var knockback_tween := $KnockbackTween
 onready var animation_player := $AnimationPlayer
 onready var animated_sprite := $AnimatedSprite
@@ -27,11 +25,6 @@ onready var hero: Node2D = get_tree().get_nodes_in_group("hero")[0]
 onready var stage: Node = get_tree().get_nodes_in_group("stage")[0]
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if state == STATE.CHASING:
@@ -39,16 +32,16 @@ func _process(delta):
 		position += direction * SPEED * delta
 		# Set sprite direction.
 		if direction_finder.get_direction() == DirectionFinder.RIGHT:
-			animated_sprite.scale.x = -1
+			scale.x = -1
 		else: 
-			animated_sprite.scale.x = 1
+			scale.x = 1
+	
 
 
 func take_hit(var amount := 1):
 	health -= amount
 	animation_player.play("hurt")
 	if health <= 0:
-		stage.increase_score(SCORE_BONUS)
 		state = STATE.DYING
 		queue_free()
 
@@ -69,6 +62,7 @@ func _on_Hitbox_area_entered(var area: Area2D):
 
 func _on_KnockbackTween_tween_completed(_object, _key):
 	state = STATE.CHASING
+	direction_finder.last_position = position
 
 
 func get_hitbox() -> Vector2:
