@@ -8,13 +8,13 @@
 [ext_resource path="res://scenes/hero.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/archer.tscn" type="PackedScene" id=11]
 
-[sub_resource type="Curve" id=3]
+[sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.5 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 144, 90 )
 
-[sub_resource type="Curve2D" id=2]
+[sub_resource type="Curve2D" id=3]
 _data = {
 "points": PoolVector2Array( -166.06, 31.4856, 166.06, -31.4856, 348.088, 88.2037, -5.93688, 19.6824, 5.93688, -19.6824, 272.566, -3.66988, -28.2424, 31.9648, 28.2424, -31.9648, 480.133, -26.3622, -226.261, 24.5038, 226.261, -24.5038, 483.666, -92.1352 )
 }
@@ -40,7 +40,7 @@ visible = false
 position = Vector2( 0, 10 )
 points = PoolVector2Array( 124, 236, 164, 227, 173, 220, 177, 213, 174, 205, 161, 194, 56, 156, 48, 150, 49, 143, 113, 139, 195, 139, 233, 134, 251, 126, 253, 117, 250, 111, 217, 99, 168, 84, 163, 78, 169, 71, 261, 52 )
 width = 15.0
-width_curve = SubResource( 3 )
+width_curve = SubResource( 1 )
 default_color = Color( 0.466667, 0.403922, 0.27451, 1 )
 joint_mode = 2
 begin_cap_mode = 2
@@ -59,11 +59,11 @@ collision_layer = 0
 collision_mask = 0
 
 [node name="SpawnArea" type="CollisionShape2D" parent="Game/EnemySpawner"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="HeroPath" type="Path2D" parent="Game"]
 position = Vector2( -227.21, 149.787 )
-curve = SubResource( 2 )
+curve = SubResource( 3 )
 
 [node name="HeroPathFollow" type="PathFollow2D" parent="Game/HeroPath"]
 position = Vector2( 348.088, 88.2037 )
@@ -73,6 +73,7 @@ loop = false
 [node name="Hero" parent="Game/HeroPath/HeroPathFollow" instance=ExtResource( 10 )]
 
 [node name="Cliffs" type="Sprite" parent="."]
+z_index = 1
 texture = ExtResource( 4 )
 centered = false
 region_enabled = true
@@ -80,11 +81,12 @@ region_rect = Rect2( 0, 288, 288, 288 )
 
 [node name="Rocks" type="Sprite" parent="."]
 position = Vector2( 197.5, 208 )
+z_index = 1
 texture = ExtResource( 3 )
 centered = false
 
 [node name="Archer" parent="." instance=ExtResource( 11 )]
-position = Vector2( 16.0246, 262.979 )
+position = Vector2( 16.0246, 258.979 )
 
 [node name="HeroPathTween" type="Tween" parent="."]
 

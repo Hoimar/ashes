@@ -102,7 +102,7 @@ animations = [ {
 } ]
 
 [node name="Archer" type="Node2D"]
-z_index = 1
+z_index = 2
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -114,6 +114,7 @@ region_rect = Rect2( 10, 9, 12, 15 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 22 )
 animation = "idle"
+frame = 5
 playing = true
 
 [node name="ArrowOffset" type="Position2D" parent="."]
