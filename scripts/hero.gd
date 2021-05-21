@@ -19,7 +19,7 @@ onready var animated_sprite = $AnimatedSprite
 onready var direction_finder = $DirectionFinder
 
 
-func _process(var delta: float):
+func _process(_delta):
 	if direction_finder.get_direction() == DirectionFinder.RIGHT:
 		scale.x = -1
 	else:

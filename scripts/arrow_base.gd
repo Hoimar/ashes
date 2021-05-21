@@ -1,14 +1,14 @@
 extends Node2D
 
 # Arrow has to face downwards to hit a target
-const DOWNWARDS_DEGREE_MIN := 0
-const DOWNWARDS_DEGREE_MAX := 180
+const DOWNWARDS_DEGREE_MIN := 0 + 20
+const DOWNWARDS_DEGREE_MAX := 180 - 20
 
 var damage := 1
 onready var hitbox := $Hitbox
 
 
-func _physics_process(var delta: float):
+func _physics_process(_delta):
 	var deg := global_rotation_degrees
 	if      deg < DOWNWARDS_DEGREE_MIN \
 		or deg > DOWNWARDS_DEGREE_MAX:

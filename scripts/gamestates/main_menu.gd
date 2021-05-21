@@ -9,7 +9,7 @@ func _ready():
 
 
 func _on_ButtonPlay_pressed():
-	Global.start_level()
+	Global.start_sequence()
 
 
 func _on_ButtonExit_pressed():

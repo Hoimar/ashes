@@ -20,7 +20,7 @@ func _ready():
 	animate_hero_path()
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("shoot") and Global.state == Global.STATE.RUNNING:
 		emit_signal("mouse_clicked")
 	if Input.is_action_pressed("ui_cancel"):

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/gamestates/main_menu.gd" type="Script" id=1]
-[ext_resource path="res://assets/music/The Archer 2 piano corregido.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/music/The Archer fullbeat.ogg" type="AudioStream" id=2]
 [ext_resource path="res://assets/ui_theme.tres" type="Theme" id=3]
 
 [node name="MainMenu" type="Control"]
@@ -73,6 +73,7 @@ align = 1
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 autoplay = true
+bus = "Music"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxButtons/ButtonPlay" to="." method="_on_ButtonPlay_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxButtons/ButtonExit" to="." method="_on_ButtonExit_pressed"]

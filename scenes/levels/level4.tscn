@@ -14,3 +14,4 @@ scene = ExtResource( 3 )
 pause_mode = 2
 stream = ExtResource( 1 )
 autoplay = true
+bus = "Music"

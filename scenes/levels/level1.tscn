@@ -11,9 +11,10 @@
 amount = 5
 scene = ExtResource( 3 )
 duration = 15.0
-cooldown = 7.0
+cooldown = 5.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="2"]
 pause_mode = 2
 stream = ExtResource( 1 )
 autoplay = true
+bus = "Music"

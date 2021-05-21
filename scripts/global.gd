@@ -3,6 +3,8 @@ extends Node
 const STAGE := preload("res://scenes/gamestates/stage.tscn")
 const POPUP := preload("res://scenes/gamestates/game_popup.tscn")
 const MAIN_MENU := preload("res://scenes/gamestates/main_menu.tscn")
+const SCENE_TRANSITIONER := preload("res://scenes/gamestates/scene_transitioner.tscn")
+
 const LEVELS := "res://scenes/levels/level%d.tscn"
 const CUTSCENES := "res://scenes/cutscenes/%s.tscn"
 
@@ -15,7 +17,6 @@ const GAME_SEQUENCE = [
 	CUTSCENES % "ending",
 ]
 
-const MAX_LEVELS := 4
 enum STATE {
 	RUNNING,
 	GAME_WON,
@@ -23,31 +24,48 @@ enum STATE {
 	LOST,
 	PAUSED,
 	BACK_TO_MENU,
+	MENU,
+	TRANSITIONING,
 }
 
 var level: int = 0
-var state: int
+var state: int = STATE.RUNNING
 
 
-func start_level(var next: bool = false):
+func start_sequence(var next: bool = false):
 	if state == STATE.PAUSED:
 		set_state(STATE.RUNNING)
-	else:
+	elif not state == STATE.TRANSITIONING:
 		if next:
 			level += 1
-		get_tree().change_scene(GAME_SEQUENCE[level])
-	set_state(STATE.RUNNING)
+		transition_to(GAME_SEQUENCE[level])
 
 
 func set_state(var new):
 	if new == state:
 		return
 	state = new
-	if state == STATE.BACK_TO_MENU:
-		get_tree().paused = false
-		get_tree().change_scene_to(MAIN_MENU)
-	elif state == STATE.RUNNING:
-		get_tree().paused = false
-	else:
-		get_tree().paused = true
-		get_tree().get_root().add_child(POPUP.instance())
+	match state:
+		STATE.BACK_TO_MENU, STATE.GAME_WON:
+			transition_to(MAIN_MENU)
+		STATE.RUNNING:
+			get_tree().paused = false
+		STATE.LOST, STATE.LEVEL_COMPLETE, STATE.PAUSED:
+			get_tree().paused = true
+			get_tree().get_root().add_child(POPUP.instance())
+
+
+# Either PackedScene or path to scene.
+func transition_to(var target_scene):
+	if state == STATE.TRANSITIONING or state == STATE.GAME_WON:
+		return
+	set_state(STATE.TRANSITIONING)
+	var transitioner := SCENE_TRANSITIONER.instance()
+	transitioner.target_scene = target_scene
+	transitioner.connect("finished", self, "_on_transition_finished")
+	get_tree().get_root().add_child(transitioner)
+
+
+func _on_transition_finished():
+	get_tree().paused = false
+	set_state(STATE.RUNNING)

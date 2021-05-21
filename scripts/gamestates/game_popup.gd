@@ -27,10 +27,10 @@ func _on_ButtonRetry_pressed():
 	if Global.state == Global.STATE.PAUSED:
 		Global.set_state(Global.STATE.BACK_TO_MENU)
 	else:
-		Global.start_level()
+		Global.start_sequence()
 	queue_free()
 
 
 func _on_ButtonContinue_pressed():
-	Global.start_level(true)
+	Global.start_sequence(true)
 	queue_free()

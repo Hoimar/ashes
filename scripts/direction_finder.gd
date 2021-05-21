@@ -22,7 +22,7 @@ func _ready():
 	last_position = parent.global_position
 
 
-func _process(var delta: float):
+func _process(_delta):
 	var current_position := parent.global_position
 	var delta_p := last_position - current_position
 	last_position = current_position

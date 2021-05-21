@@ -12,7 +12,7 @@
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.5 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 144, 88.6581 )
+extents = Vector2( 144, 90 )
 
 [sub_resource type="Curve2D" id=2]
 _data = {
@@ -36,6 +36,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 288, 288 )
 
 [node name="LineAsHeroPath" type="Line2D" parent="."]
+visible = false
 position = Vector2( 0, 10 )
 points = PoolVector2Array( 124, 236, 164, 227, 173, 220, 177, 213, 174, 205, 161, 194, 56, 156, 48, 150, 49, 143, 113, 139, 195, 139, 233, 134, 251, 126, 253, 117, 250, 111, 217, 99, 168, 84, 163, 78, 169, 71, 261, 52 )
 width = 15.0
@@ -51,14 +52,13 @@ position = Vector2( 247.541, 35.3171 )
 [node name="Game" type="YSort" parent="."]
 
 [node name="EnemySpawner" parent="Game" instance=ExtResource( 8 )]
+position = Vector2( 144, 147 )
 monitoring = false
 monitorable = false
 collision_layer = 0
 collision_mask = 0
 
 [node name="SpawnArea" type="CollisionShape2D" parent="Game/EnemySpawner"]
-visible = false
-position = Vector2( 144, 131.212 )
 shape = SubResource( 1 )
 
 [node name="HeroPath" type="Path2D" parent="Game"]

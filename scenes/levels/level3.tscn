@@ -8,7 +8,7 @@
 [node name="Level3" instance=ExtResource( 2 )]
 
 [node name="EnemyWave3" parent="." index="1" instance=ExtResource( 4 )]
-amount = 4
+amount = 5
 scene = ExtResource( 3 )
 cooldown = 0.1
 
@@ -16,3 +16,4 @@ cooldown = 0.1
 pause_mode = 2
 stream = ExtResource( 1 )
 autoplay = true
+bus = "Music"

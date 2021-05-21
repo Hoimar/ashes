@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/sprites/Spritesheet Archer.png" type="Texture" id=1]
 [ext_resource path="res://scripts/archer.gd" type="Script" id=2]
+[ext_resource path="res://assets/sprites/Shadows.png" type="Texture" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -101,12 +102,18 @@ animations = [ {
 } ]
 
 [node name="Archer" type="Node2D"]
+z_index = 1
 script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.999999, 21 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 10, 9, 12, 15 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 22 )
 animation = "idle"
-frame = 3
 playing = true
 
 [node name="ArrowOffset" type="Position2D" parent="."]
