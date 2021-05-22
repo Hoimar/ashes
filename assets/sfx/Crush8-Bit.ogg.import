@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Crush8-Bit.ogg-89e5caaeeacaa6cac5668b7882da283d.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/Crush8-Bit.ogg"
+dest_files=[ "res://.import/Crush8-Bit.ogg-89e5caaeeacaa6cac5668b7882da283d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

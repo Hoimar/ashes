@@ -62,7 +62,7 @@ func set_state(var new):
 
 # Either PackedScene or path to scene.
 func transition_to(var target_scene):
-	if state == STATE.TRANSITIONING or state == STATE.GAME_WON:
+	if state == STATE.TRANSITIONING:
 		return
 	set_state(STATE.TRANSITIONING)
 	var transitioner := SCENE_TRANSITIONER.instance()
@@ -74,3 +74,17 @@ func transition_to(var target_scene):
 func _on_transition_finished():
 	get_tree().paused = false
 	set_state(STATE.RUNNING)
+
+
+func play_sound(var stream: AudioStream, var pos: Vector2 = Vector2.ZERO):
+	if pos != Vector2.ZERO:
+		var asp2d = AudioStreamPlayer2D.new()
+		asp2d.stream = stream
+		asp2d.position = pos
+		add_child(asp2d)
+		asp2d.play()
+	else:
+		var asp = AudioStreamPlayer.new()
+		asp.stream = stream
+		add_child(asp)
+		asp.play()

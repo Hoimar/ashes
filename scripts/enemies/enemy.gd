@@ -21,6 +21,7 @@ onready var animation_player := $AnimationPlayer
 onready var animated_sprite := $AnimatedSprite
 onready var hitbox_shape := $Hitbox/CollisionShape2D
 onready var direction_finder := $DirectionFinder
+onready var sfx_player := $AudioStreamPlayer2D
 onready var hero: Node2D = get_tree().get_nodes_in_group("hero")[0]
 onready var stage: Node = get_tree().get_nodes_in_group("stage")[0]
 
@@ -35,12 +36,12 @@ func _process(delta):
 			scale.x = -1
 		else: 
 			scale.x = 1
-	
 
 
 func take_hit(var amount := 1):
 	health -= amount
 	animation_player.play("hurt")
+	Global.play_sound(sfx_player.stream, global_position)
 	if health <= 0:
 		state = STATE.DYING
 		queue_free()

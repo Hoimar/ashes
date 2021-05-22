@@ -10,7 +10,7 @@
 [node name="Level3" instance=ExtResource( 2 )]
 
 [node name="EnemyWave3" parent="." index="1" instance=ExtResource( 4 )]
-amount = 6
+amount = 5
 scene = ExtResource( 3 )
 cooldown = 5.0
 

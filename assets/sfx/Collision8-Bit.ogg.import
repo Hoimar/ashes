@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Collision8-Bit.ogg-0786915c13da03d154309f79d49b0a8c.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/Collision8-Bit.ogg"
+dest_files=[ "res://.import/Collision8-Bit.ogg-0786915c13da03d154309f79d49b0a8c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

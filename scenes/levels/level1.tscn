@@ -1,11 +1,30 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/music/The Archer 2 piano corregido.ogg" type="AudioStream" id=1]
 [ext_resource path="res://scenes/levels/level.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/enemies/enemy_small.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/enemies/enemy_wave.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/ui/ui_theme.tres" type="Theme" id=5]
+[ext_resource path="res://scripts/levels/level1.gd" type="Script" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "show_label"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/Label:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 4, 6 ),
+"transitions": PoolRealArray( 1, 1e-05, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 124, 289.925 ), Vector2( 124, 267.925 ), Vector2( 124, 267.925 ), Vector2( 124, 291.925 ) ]
+}
 
 [node name="Level1" instance=ExtResource( 2 )]
+script = ExtResource( 6 )
 
 [node name="EnemyWave1" parent="." index="1" instance=ExtResource( 4 )]
 amount = 5
@@ -18,3 +37,28 @@ pause_mode = 2
 stream = ExtResource( 1 )
 autoplay = true
 bus = "Music"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+anims/show_label = SubResource( 1 )
+
+[node name="Control" type="Control" parent="." index="5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control" index="0"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -164.0
+margin_top = -15.521
+margin_right = -18.0
+margin_bottom = -3.521
+theme = ExtResource( 5 )
+text = "Click/Hold left mouse to shoot"
+__meta__ = {
+"_edit_use_anchors_": false
+}

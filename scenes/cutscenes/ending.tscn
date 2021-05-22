@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/music/The Archer 2 piano corregido.ogg" type="AudioStream" id=1]
 [ext_resource path="res://scripts/cutscenes/ending.gd" type="Script" id=2]
+[ext_resource path="res://assets/ui/ui_theme.tres" type="Theme" id=3]
+[ext_resource path="res://assets/sprites/hero portrait.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/portrait arki.png" type="Texture" id=5]
 
 [node name="Ending" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 3 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -14,16 +18,53 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="CenterContainer"]
-margin_left = 45.0
-margin_top = 128.0
-margin_right = 243.0
-margin_bottom = 159.0
-text = "You did it, you crazy hedgehog!
-Congratulations!"
+margin_left = 75.0
+margin_top = 63.0
+margin_right = 212.0
+margin_bottom = 225.0
+text = "You made it, congratulations!
+
+
+Thank you for playing.
+
+
+
+Graphics: idleluke
+Code: Hoimar
+Design: idleluke & Hoimar
+Music: Apartao"
 align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -18.0
+margin_top = -8.0
+margin_right = 18.0
+margin_bottom = 8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 4 )
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+margin_left = 20.0
+margin_right = 36.0
+margin_bottom = 16.0
+texture = ExtResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
 autoplay = true
+bus = "Music"

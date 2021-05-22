@@ -11,6 +11,14 @@ __meta__ = {
 }
 
 [node name="NinePatchRect" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.0
+margin_top = -74.5
+margin_right = 112.0
+margin_bottom = 74.5
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )

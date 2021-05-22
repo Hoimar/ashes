@@ -1,9 +1,9 @@
 class_name GamePopup
 extends Node
 
-onready var label_message := $PanelContainer/VBoxContainer/LabelMessage
-onready var button_retry := $PanelContainer/VBoxContainer/HBoxContainer/ButtonRetry
-onready var button_continue := $PanelContainer/VBoxContainer/HBoxContainer/ButtonContinue
+onready var label_message := $PanelContainer/MarginContainer/VBoxContainer/LabelMessage
+onready var button_retry := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ButtonRetry
+onready var button_continue := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ButtonContinue
 
 
 # Called when the node enters the scene tree for the first time.
