@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/sprites/TEXTBOX.png" type="Texture" id=1]
+[ext_resource path="res://scripts/cutscenes/dialog_textbox.gd" type="Script" id=2]
+[ext_resource path="res://assets/ui/ui_theme.tres" type="Theme" id=3]
+
+[node name="Control" type="Control"]
+margin_right = 92.0
+margin_bottom = 87.0
+theme = ExtResource( 3 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogTextbox" type="NinePatchRect" parent="."]
+anchor_bottom = 1.0
+margin_left = 19.3494
+margin_top = 53.3289
+margin_right = 276.349
+margin_bottom = 147.329
+texture = ExtResource( 1 )
+patch_margin_left = 28
+patch_margin_top = 12
+patch_margin_right = 9
+patch_margin_bottom = 20
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogTextbox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 12.0
+margin_right = -9.0
+margin_bottom = -20.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[color=#00ff00]NAME[/color]
+Text"
+text = "NAME
+Text"
+fit_content_height = true
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TweenText" type="Tween" parent="."]

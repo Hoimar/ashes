@@ -10,9 +10,9 @@
 [node name="Level3" instance=ExtResource( 2 )]
 
 [node name="EnemyWave3" parent="." index="1" instance=ExtResource( 4 )]
-amount = 5
+amount = 6
 scene = ExtResource( 3 )
-cooldown = 0.1
+cooldown = 5.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="2"]
 pause_mode = 2

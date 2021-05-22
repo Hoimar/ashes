@@ -32,6 +32,11 @@ var level: int = 0
 var state: int = STATE.RUNNING
 
 
+func _process(delta):
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		OS.set_window_fullscreen(!OS.is_window_fullscreen())
+
+
 func start_sequence(var next: bool = false):
 	if state == STATE.PAUSED:
 		set_state(STATE.RUNNING)
