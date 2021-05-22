@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/music/The Archer fullbeat.ogg" type="AudioStream" id=1]
 [ext_resource path="res://scenes/levels/level.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/enemies/enemy_boss.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/enemies/enemy_wave.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/urns/urn2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/urns/urn3.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/urns/urn1.tscn" type="PackedScene" id=7]
 
 [node name="Level4" instance=ExtResource( 2 )]
 
@@ -15,3 +18,12 @@ pause_mode = 2
 stream = ExtResource( 1 )
 autoplay = true
 bus = "Music"
+
+[node name="Urn1" parent="UrnContainer" index="0" instance=ExtResource( 7 )]
+position = Vector2( 4.99704, -2.57092 )
+
+[node name="Urn2" parent="UrnContainer" index="1" instance=ExtResource( 5 )]
+position = Vector2( 21.0615, -2 )
+
+[node name="Urn3" parent="UrnContainer" index="2" instance=ExtResource( 6 )]
+position = Vector2( 36, -2 )

@@ -31,20 +31,6 @@ tracks/1/keys = {
 "method": "change_to_target_scene"
 } ]
 }
-tracks/2/type = "method"
-tracks/2/path = NodePath("TweenFadeInMusic")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "start"
-} ]
-}
 
 [node name="SceneTransitioner" type="Control"]
 pause_mode = 2
@@ -67,7 +53,5 @@ __meta__ = {
 anims/transition = SubResource( 1 )
 
 [node name="TweenFadeOutMusic" type="Tween" parent="."]
-
-[node name="TweenFadeInMusic" type="Tween" parent="."]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -66,6 +66,7 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -9.53674e-07, 18 )
+z_index = -1
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 42, 9, 13, 14 )
@@ -74,7 +75,7 @@ region_rect = Rect2( 42, 9, 13, 14 )
 position = Vector2( -2, -1 )
 frames = SubResource( 8 )
 animation = "walk"
-frame = 5
+frame = 6
 playing = true
 
 [node name="Hitbox" type="Area2D" parent="."]

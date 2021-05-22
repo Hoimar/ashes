@@ -1,4 +1,4 @@
-extends Control
+extends Node
 
 signal finished
 
@@ -7,7 +7,6 @@ var audio_bus_music: int = AudioServer.get_bus_index("Music")
 var volume_start := AudioServer.get_bus_volume_db(audio_bus_music)
 onready var animation_player := $AnimationPlayer
 onready var tween_fade_out_music := $TweenFadeOutMusic
-onready var tween_fade_in_music := $TweenFadeInMusic
 
 
 func _ready():
@@ -16,9 +15,6 @@ func _ready():
 	tween_fade_out_music.interpolate_method(self, "set_music_volume",
 			volume_start, -80.0, fade_length, \
 			Tween.TRANS_QUAD, Tween.EASE_IN)
-	tween_fade_in_music.interpolate_method(self, "set_music_volume",
-			-80.0, volume_start, fade_length, \
-			Tween.TRANS_QUAD, Tween.EASE_OUT)
 	animation_player.play("transition")
 	tween_fade_out_music.start()
 
@@ -30,6 +26,7 @@ func change_to_target_scene():
 		get_tree().change_scene(target_scene)
 	yield(get_tree(), "idle_frame")   # Await scene change.
 	get_viewport().move_child(self, self.get_position_in_parent()+1)
+	AudioServer.set_bus_volume_db(audio_bus_music, volume_start)
 
 
 func _on_AnimationPlayer_animation_finished(_anim_name):

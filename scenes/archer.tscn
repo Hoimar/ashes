@@ -102,7 +102,6 @@ animations = [ {
 } ]
 
 [node name="Archer" type="Node2D"]
-z_index = 2
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -114,10 +113,15 @@ region_rect = Rect2( 10, 9, 12, 15 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 22 )
 animation = "idle"
-frame = 5
+frame = 1
 playing = true
 
 [node name="ArrowOffset" type="Position2D" parent="."]
 position = Vector2( 6, -20 )
 
+[node name="ShootingDelayTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="timeout" from="ShootingDelayTimer" to="." method="_on_ShootingDelayTimer_timeout"]

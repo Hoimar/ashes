@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/gamestates/stage.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/cliff2.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/rock sprites.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/GROUND 2-export.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/ui_theme.tres" type="Theme" id=5]
 [ext_resource path="res://scenes/enemies/enemy_spawner.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/goal.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/hero.tscn" type="PackedScene" id=10]
@@ -24,12 +26,14 @@ _data = {
 ]]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 5 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Ground" type="Sprite" parent="."]
+z_index = -2
 texture = ExtResource( 4 )
 centered = false
 region_enabled = true
@@ -73,26 +77,21 @@ loop = false
 [node name="Hero" parent="Game/HeroPath/HeroPathFollow" instance=ExtResource( 10 )]
 
 [node name="Cliffs" type="Sprite" parent="."]
-z_index = 1
-texture = ExtResource( 4 )
+texture = ExtResource( 2 )
 centered = false
-region_enabled = true
 region_rect = Rect2( 0, 288, 288, 288 )
 
 [node name="Rocks" type="Sprite" parent="."]
 position = Vector2( 197.5, 208 )
-z_index = 1
 texture = ExtResource( 3 )
 centered = false
 
 [node name="Archer" parent="." instance=ExtResource( 11 )]
-position = Vector2( 16.0246, 258.979 )
+position = Vector2( 24.0246, 243.979 )
 
 [node name="HeroPathTween" type="Tween" parent="."]
 
 [node name="UI" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -105,14 +104,14 @@ __meta__ = {
 }
 
 [node name="LabelHealth" type="Label" parent="UI/HBoxContainer"]
-margin_right = 93.0
-margin_bottom = 14.0
+margin_right = 64.0
+margin_bottom = 12.0
 text = "Hero Health: 1"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/HBoxContainer"]
-margin_left = 97.0
-margin_right = 97.0
-margin_bottom = 14.0
+margin_left = 68.0
+margin_right = 68.0
+margin_bottom = 12.0
 
 [node name="BasinContainer" type="HBoxContainer" parent="UI"]
 anchor_top = 1.0

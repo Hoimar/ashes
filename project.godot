@@ -34,7 +34,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/enemies/enemy_wave.gd"
 }, {
-"base": "CenterContainer",
+"base": "Node",
 "class": "GamePopup",
 "language": "GDScript",
 "path": "res://scripts/gamestates/game_popup.gd"
@@ -62,7 +62,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="From Ashes"
+config/name="Ashes"
 run/main_scene="res://scenes/gamestates/main_menu.tscn"
 config/icon="res://icon.png"
 
@@ -100,4 +100,3 @@ common/enable_pause_aware_picking=true
 quality/driver/driver_name="GLES2"
 environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://assets/default_env.tres"
-quality/dynamic_fonts/use_oversampling=false

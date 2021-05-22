@@ -43,6 +43,7 @@ extents = Vector2( 8, 15 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 position = Vector2( -9.53674e-07, 19 )
+z_index = -1
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 42, 9, 13, 14 )
@@ -51,7 +52,7 @@ region_rect = Rect2( 42, 9, 13, 14 )
 position = Vector2( 1, 0 )
 frames = SubResource( 7 )
 animation = "run"
-frame = 2
+frame = 5
 playing = true
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]

@@ -1,6 +1,5 @@
 class_name GamePopup
-extends CenterContainer
-
+extends Node
 
 onready var label_message := $PanelContainer/VBoxContainer/LabelMessage
 onready var button_retry := $PanelContainer/VBoxContainer/HBoxContainer/ButtonRetry

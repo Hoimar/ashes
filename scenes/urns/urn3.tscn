@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/sprites/Shadows.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/urns.png" type="Texture" id=3]
+
+[node name="Urn3" type="Node2D"]
+
+[node name="Shadow" type="Sprite" parent="."]
+position = Vector2( 0, 11 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 10, 9, 12, 15 )
+
+[node name="Urn" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 29, 12, 12 )
