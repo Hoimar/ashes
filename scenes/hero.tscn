@@ -90,7 +90,7 @@ region_rect = Rect2( 42, 9, 13, 14 )
 position = Vector2( -2, -1 )
 frames = SubResource( 8 )
 animation = "walk"
-frame = 4
+frame = 2
 playing = true
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -108,6 +108,7 @@ anims/take_damage = SubResource( 10 )
 only_x_axis = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+pause_mode = 2
 stream = ExtResource( 5 )
 bus = "SFX"
 

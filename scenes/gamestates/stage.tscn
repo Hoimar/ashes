@@ -104,14 +104,14 @@ __meta__ = {
 }
 
 [node name="LabelHealth" type="Label" parent="UI/HBoxContainer"]
-margin_right = 64.0
-margin_bottom = 12.0
+margin_right = 73.0
+margin_bottom = 13.0
 text = "Hero Health: 1"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/HBoxContainer"]
-margin_left = 68.0
-margin_right = 68.0
-margin_bottom = 12.0
+margin_left = 77.0
+margin_right = 77.0
+margin_bottom = 13.0
 
 [node name="BasinContainer" type="HBoxContainer" parent="UI"]
 anchor_top = 1.0

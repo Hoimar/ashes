@@ -32,7 +32,11 @@ var level: int = 0
 var state: int = STATE.RUNNING
 
 
-func _process(delta):
+func _ready():
+	set_pause_mode(Node.PAUSE_MODE_PROCESS)
+
+
+func _process(_delta):
 	if Input.is_action_just_pressed("toggle_fullscreen"):
 		OS.set_window_fullscreen(!OS.is_window_fullscreen())
 
@@ -81,10 +85,12 @@ func play_sound(var stream: AudioStream, var pos: Vector2 = Vector2.ZERO):
 		var asp2d = AudioStreamPlayer2D.new()
 		asp2d.stream = stream
 		asp2d.position = pos
+		asp2d.connect("finished", asp2d, "queue_free")
 		add_child(asp2d)
 		asp2d.play()
 	else:
 		var asp = AudioStreamPlayer.new()
 		asp.stream = stream
+		asp.connect("finished", asp, "queue_free")
 		add_child(asp)
 		asp.play()

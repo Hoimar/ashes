@@ -1,7 +1,8 @@
 extends Control
 
 const CHARACTER_DELAY := 0.04
-
+const PITCH_MIN := 0.97
+const PITCH_MAX := 1.03
 
 enum STATE {
 	RUNNING_TEXT,
@@ -11,7 +12,7 @@ enum STATE {
 var char_narrator = DialogCharacter.new("", Color.black, null)
 var char_hero     = DialogCharacter.new("HERO", Color.darkblue,
 		preload("res://assets/sprites/hero portrait.png"))
-var char_arki     = DialogCharacter.new("ARKI", Color.greenyellow,
+var char_arki     = DialogCharacter.new("ARKI", Color.limegreen,
 		preload("res://assets/sprites/portrait arki.png"))
 
 var dialog := [
@@ -56,7 +57,7 @@ func _ready():
 	show_next_part()
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		if state == STATE.RUNNING_TEXT:
 			tween_text.stop_all()
@@ -67,12 +68,12 @@ func _process(delta):
 	if state == STATE.RUNNING_TEXT and not current_part == dialog.size():
 		if dialog[current_part].character == char_arki \
 		   and not sfx_voice_high.is_playing():
+			sfx_voice_high.set_pitch_scale(rand_range(PITCH_MIN, PITCH_MAX))
 			sfx_voice_high.play()
-			print(STATE.keys()[state], " high")
 		if dialog[current_part].character == char_hero \
 		   and not sfx_voice_low.is_playing():
+			sfx_voice_low.set_pitch_scale(rand_range(PITCH_MIN, PITCH_MAX))
 			sfx_voice_low.play()
-			print(STATE.keys()[state], " low")
 
 
 func show_next_part():

@@ -37,7 +37,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 18, 35 )
+extents = Vector2( 15.4768, 24.1123 )
 
 [node name="Enemy" instance=ExtResource( 1 )]
 health = 10
@@ -52,11 +52,12 @@ region_rect = Rect2( 65, 6, 30, 20 )
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 7 )
 animation = "run"
-frame = 2
+frame = 4
 playing = true
 
 [node name="Hitbox" parent="." index="2"]
 position = Vector2( 0, 6 )
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 0, 9 )
 shape = SubResource( 8 )
